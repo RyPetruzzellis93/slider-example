@@ -1,0 +1,30 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+	font-size: 1em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+ .ui-slider {
+
+	width: 70%;
+	margin: 0 auto;
+
+ }
+ .center-position {
+ 	margin: 0 auto;
+ 	text-align: center;
+ 	width: 40%;
+ }

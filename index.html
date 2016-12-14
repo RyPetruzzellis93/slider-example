@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    'use strict';
+    $(document).ready(function() {
+      var form = $( ' #form-id ' );
+      var urlStr = 'http://pokeapi.co/api/v2/pokemon/';
+      var target = $( ' #target ' );
+
+
+        var handle = $( "#custom-handle" );
+        $( "#slider" ).slider({
+          min: 1,
+          max: 721, 
+          create: function() {
+            handle.text( $( this ).slider( "value" ) );
+          },
+          slide: function( event, ui ) {
+            handle.text( ui.value );
+          }
+        });
+      form.on('submit',function(e,value) {
+          e.preventDefault(); //need this shit!!!
+console.log();
+          $.ajax({
+            url: urlStr + handle[0].innerHTML,
+            success: function(data) {
+              console.log(data)
+              target[0].innerHTML += data.name + data.sprites.front_default;
+            console.log(target[0]);
+
+            }
+          })
+          // getData(urlStr + 2);
+        });
+
+    });
+  </script>
+</head>
+<body>
+  <h1 class="center-position">Slider For Pokemon!</h1>
+  <form id="form-id">
+    <div id="slider">
+      <div id="custom-handle" class="ui-slider-handle"></div>
+    </div>
+    <input class="" type="submit" value="search">
+  </form> 
+  <div id="target"></div>
+</body>
+</html>
